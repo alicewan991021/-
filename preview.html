@@ -21,7 +21,7 @@ function open(html){$('panel').innerHTML=html;$('overlay').classList.remove('hid
 $('scene').addEventListener('click',e=>{if(e.target.closest('.spot')){interact(e.target.dataset.id);return}let r=$('scene').getBoundingClientRect();let x=(e.clientX-r.left)/r.width*100,y=(e.clientY-r.top)/r.height*100;if(y>45){p.x=x;p.y=y;$('player').style.left=x+'%';$('player').style.top=y+'%';nearby()}});
 document.querySelectorAll('[data-move]').forEach(b=>b.addEventListener('click',()=>{let d=b.dataset.move;move(d==='left'?-4:d==='right'?4:0,d==='up'?-3:d==='down'?3:0)}));
 document.addEventListener('keydown',e=>{let k=e.key.toLowerCase(),m={arrowleft:'left',a:'left',arrowright:'right',d:'right',arrowup:'up',w:'up',arrowdown:'down',s:'down'}[k];if(m){e.preventDefault();let d=m;move(d==='left'?-3:d==='right'?3:0,d==='up'?-3:d==='down'?3:0)}});
-document.querySelectorAll('.spot').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();interact(b.dataset.id)}));
+
 $('inspect').onclick=()=>{if(near)interact(near);else say('四處查看','房間裡很安靜，只聽得見窗外的雨聲。')};
 $('bag').onclick=()=>open('<h2>物品欄</h2><p>'+(items.length?items.join('<br>'):'目前沒有物品。')+'</p><button onclick="closePanel()">關閉</button>');
 $('journal').onclick=()=>open('<h2>敬偉的筆記本</h2><p>'+(found.length?found.join('<br><br>'):'目前還沒有紀錄。')+'</p><button onclick="closePanel()">關閉</button>');
