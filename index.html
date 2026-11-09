@@ -57,7 +57,7 @@
 <div id="modal" class="hidden"><div class="modal-card" id="modalCard"></div></div>
 <script>
 const $=id=>document.getElementById(id);
-const defaultState={scene:'title',room:'bedroom',x:1,y:2,gear:[3,2,4,6],gearSolved:false,drawerOpen:false,washed:[],steamed:false,mirrorSeen:false,bathClues:[],clues:[],notes:[],history:[],bathUnlocked:false};
+const defaultState={scene:'title',room:'bedroom',x:1,y:2,gear:[3,2,4,6],gearSolved:false,drawerOpen:false,washed:[],steamed:false,mirrorSeen:false,bathClues:[],clues:[],notes:['今天又在鏡子裡看見一個人。若我再忘記他，先別急著相信自己。'],history:[],bathUnlocked:false};
 let S=loadState()||structuredClone(defaultState);
 const rooms={
 bedroom:{title:'臥室',sub:'暴雨清晨 · 頭痛欲裂',chapter:'CHAPTER 01',objects:[
@@ -101,13 +101,13 @@ if(id==='bed'){showModal('床沿','身體沉得像灌了鉛。頭痛沒有消失
 if(id==='clock'){showModal('舊機械鐘','床頭的機械鐘停在凌晨。後蓋有四枚連動齒輪，齒輪旁刻著「轉動一枚，下一枚會反向跟著走」。\\n\\n要讓四個數字回到正確位置，先找出它們要對應的日期。',[{label:'檢查齒輪',primary:true,fn:()=>{closeModal();gearPuzzle()}}]);}
 if(id==='nightstand'){showModal('床頭櫃','抽屜卡住了，像是裡面有機關。櫃面有一圈長年摩擦留下的痕跡。',[{label:'查看抽屜機關',fn:()=>{closeModal();gearPuzzle()}}]);}
 if(id==='window'){addClue('bed_window','窗外雨勢很大。玻璃映出房間裡的輪廓，敬偉一瞬間覺得房內似乎還有另一個人，回頭卻只看見空蕩蕩的床。');setNarrative('窗戶','雨水沿著玻璃往下滑。窗上的倒影讓你以為身後有人。\\n\\n你回過頭，房間裡只有自己。');}
-if(id==='closet'){addClue('bed_closet','衣櫃裡掛著整齊的黑色衣物，最外側衣架卻空著，像是有人剛取走一件衣服。');setNarrative('衣櫃','黑色衣物依照長短排列。最外側留著一個空衣架，衣架上掛著一小段淺色毛線。');}
+if(id==='closet'){addClue('bed_closet','衣櫃深處有一只沒有署名的黑色信封，裡面記著敬偉近幾週的外出時間，還有幾次「同行者未確認」的註記。');setNarrative('衣櫃','黑色衣物依照長短排列。最裡面壓著一只沒有署名的黑色信封。\n\n紙上記著你近幾週的外出時間，旁邊還有「同行者未確認」幾個字。這是誰在記錄？');}
 if(id==='notebook'){showJournal();}
 if(id==='door'){S.room='bathroom';S.x=1;S.y=2;renderRoom();setNarrative('走進廁所','頭痛讓你想洗把臉清醒一下。你扶著牆走進廁所，鏡面有些水痕，洗手台上放著日常用品。');}
 }
 if(room==='bathroom'){
 if(id==='sink'){showModal('洗手台','水龍頭的金屬把手有冷凝的水珠。你可以自由梳洗，不必照固定順序。',[{label:'洗臉',fn:()=>wash('洗臉')},{label:'刷牙',fn:()=>wash('刷牙')},{label:'刮鬍子',fn:()=>wash('刮鬍子')},{label:'用冷水漱口',fn:()=>wash('漱口')},{label:'轉開熱水',primary:true,fn:()=>{closeModal();steam()}}]);}
-if(id==='mirror'){if(!S.steamed){addClue('bath_redmark','鏡子角落有紅色奇異筆留下的筆畫，像是有人寫到一半又停下。字跡被擦過，無法辨認完整內容。');setNarrative('浴室鏡子','鏡面角落有幾道紅色筆畫。你靠近看，筆跡似乎被擦拭過，留下斷斷續續的痕跡。\\n\\n這是誰寫的？');}else{S.mirrorSeen=true;addClue('bath_mist','熱水蒸氣讓鏡面浮出另一層痕跡：幾個被刻意避開水氣的區域，組成一段不完整的提醒：「先確認今天，再相信眼前。」');setNarrative('水霧中的鏡子','鏡面逐漸起霧。原本看不清的地方，反而留下幾塊乾燥的區域。\\n\\n像是有人曾經在這裡寫過字，又刻意把某些地方擦乾淨。\\n\\n「先確認今天，再相信眼前。」');}}
+if(id==='mirror'){if(!S.steamed){addClue('bath_redmark','鏡子角落有紅色奇異筆留下的筆畫。筆勢與敬偉筆記本裡某段字跡相似，但他不記得自己寫過。');setNarrative('浴室鏡子','鏡面角落有幾道紅色筆畫。你靠近看，筆跡似乎被擦拭過，留下斷斷續續的痕跡。\\n\\n這是誰寫的？');}else{S.mirrorSeen=true;addClue('bath_mist','熱水蒸氣讓鏡面浮出另一層痕跡：幾個被刻意避開水氣的區域，組成一段不完整的提醒：「先確認今天，再相信眼前。」');setNarrative('水霧中的鏡子','鏡面逐漸起霧。原本看不清的地方，反而留下幾塊乾燥的區域。\\n\\n像是有人曾經在這裡寫過字，又刻意把某些地方擦乾淨。\\n\\n「先確認今天，再相信眼前。」');}}
 if(id==='cabinet'){if(S.mirrorSeen){addClue('bath_cabinet','洗手台下櫃裡有兩支不同款式的牙刷替換頭，旁邊還有一張被撕掉一半的紙條。');showModal('洗手台下櫃','櫃門沒有上鎖，只是卡得很緊。裡面有兩支不同款式的牙刷替換頭，還有一張撕裂的紙條。\\n\\n紙條殘留：「……出入時間……不要讓他知道……」',[{label:'把紙條收進筆記',fn:()=>{addClue('bath_fragment','紙條殘留「出入時間」「不要讓他知道」等字句，無法判斷是在提醒、監視，還是另一種意思。');setNarrative('撕裂的紙條','字跡沒有署名。你無法確定它是在記錄誰，也不知道它為什麼會出現在家裡。');closeModal()}}]);}else setNarrative('洗手台下櫃','櫃門卡住了。你先處理鏡子上的痕跡，或許能看出這個空間裡還有什麼被忽略。');}
 if(id==='towel'){addClue('bath_towel','毛巾架上有兩條毛巾。一條摺得整齊，另一條還濕著，像剛有人用過。');setNarrative('毛巾架','兩條毛巾。一條整整齊齊，另一條濕了一角。你伸手碰了碰，水還沒乾。');}
 if(id==='shower'){setNarrative('蓮蓬頭','你轉開蓮蓬頭，水聲填滿狹小的空間。水流打在磁磚上，頭痛仍在，沒有因為水聲而消失。');}
