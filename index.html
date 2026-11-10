@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#e9dfcf"><title>記憶重生｜互動探索版</title>
+<meta name="theme-color" content="#211e1a"><title>記憶重生｜新版介面探索版</title>
 <style>
 :root{--ink:#39372f;--muted:#827a6c;--paper:#f5efe5;--line:#d8cbbb;--wood:#876b50;--gold:#b18d5c;--shadow:0 18px 50px #3b302322}
 *{box-sizing:border-box}body{margin:0;background:#e8e0d4;color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif}button{font:inherit;cursor:pointer;color:inherit}#app{max-width:1440px;margin:auto;min-height:100svh;background:#f6f1e8;box-shadow:0 0 50px #51453318}.hidden{display:none!important}
@@ -14,6 +14,59 @@ header{height:58px;display:flex;align-items:center;justify-content:space-between
 #modal{position:fixed;inset:0;background:#28251f9c;z-index:20;display:grid;place-items:center;padding:14px;backdrop-filter:blur(3px)}.modal-card{width:min(700px,100%);max-height:92svh;overflow:auto;background:#f8f3ea;border:1px solid #d9cbb8;border-radius:14px;box-shadow:0 25px 80px #0005}.modal-head{position:sticky;top:0;background:#f8f3ea;padding:15px 19px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.modal-head h3{font:400 23px Georgia,serif;margin:0}.modal-head button{border:0;background:transparent;font-size:23px}.modal-body{padding:18px 20px;line-height:1.9}.modal-body p{margin:0 0 12px}.modal-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.modal-actions button{border:1px solid var(--line);background:#fffaf2;border-radius:8px;padding:9px 13px;font-size:12px}.modal-actions .primary{background:#806749;border-color:#806749}.gear-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}.gear{background:#eee5d8;border:1px solid #d5c6b2;border-radius:10px;text-align:center;padding:12px 7px}.wheel{width:66px;height:66px;border-radius:50%;margin:0 auto 8px;border:7px dotted #99866c;background:radial-gradient(circle,#f9f3e9 0 26%,#b8a58a 28% 38%,#e1d5c3 40%);display:grid;place-items:center;box-shadow:inset 0 2px 5px #74634b44}.wheel b{font:25px Georgia,serif}.gear small{font-size:10px;color:#827663}.gear button{width:100%;margin-top:8px;border:1px solid #cbbba4;background:#fffaf2;border-radius:7px;padding:7px;font-size:11px}.code{font-size:23px;letter-spacing:.3em;text-align:center;width:190px;padding:10px;border:1px solid #cdbda7;border-radius:8px;background:#fff}.journal{font-size:13px;line-height:1.9;color:#5d574c}.journal li{margin-bottom:9px}
 @media(max-width:850px){#game{grid-template-columns:1fr;padding:9px}.sidebar{padding:13px}.story{min-height:65px}.stage{aspect-ratio:4/3}.scene-top h2{font-size:21px}header{padding:0 12px}}
 @media(max-width:460px){.gear-grid{grid-template-columns:repeat(2,1fr)}.stage{aspect-ratio:1/1}.headtools button{padding:7px 8px;font-size:10px}.scene-bottom{font-size:10px}}
+
+/* MEMORY REBIRTH — refreshed warm modern interface */
+:root{--ink:#eee6da;--muted:#b8aa98;--paper:#24211e;--line:#55483b;--wood:#8a6b4d;--gold:#c4a477;--shadow:0 18px 55px #0008}
+html{background:#171614}
+body{background:radial-gradient(ellipse at 50% 0%,#40352b 0,#211e1a 48%,#151412 100%);color:var(--ink)}
+#app{max-width:1600px;background:transparent;box-shadow:none;min-height:100svh}
+header{height:66px;padding:0 clamp(14px,3vw,42px);background:#201d1aee;border-bottom:1px solid #5b4937;backdrop-filter:blur(16px)}
+header strong{color:#f3e8d8;letter-spacing:.2em}
+header small{color:#b59a76}
+.headtools button,.soft{background:#302a24;border:1px solid #65513c;color:#eadcc9;border-radius:7px}
+.headtools button:hover,.actions button:hover,.sidebtn:hover{background:#493a2d;border-color:#b18c5e}
+#title{min-height:calc(100svh - 66px);background:linear-gradient(120deg,#171513dd,#241e19cc),radial-gradient(ellipse at 50% 42%,#806044,#211b16 72%);color:#f0e6d8;position:relative;overflow:hidden}
+#title:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#171513aa,transparent 45%,#17151366),repeating-linear-gradient(0deg,transparent 0 78px,#ffffff06 79px 80px);pointer-events:none}
+.cover{position:relative;padding:clamp(24px,5vw,58px);border:1px solid #8e7250;border-radius:18px;background:linear-gradient(145deg,#28221dcc,#171513dd);box-shadow:0 30px 90px #0009;max-width:640px}
+.eyebrow{color:#c6a77a}
+.cover h1{color:#f4e9d9;text-shadow:0 5px 30px #d0a87544}
+.cover .sub{color:#c7b49b}
+.cover p{color:#d1c3b1}
+.primary{background:linear-gradient(135deg,#a98658,#76583a)!important;border:1px solid #d1ad7b!important;color:#fff8ee!important}
+.cover button{border-radius:7px;color:#f2e4d1;background:#30271f;border-color:#a88961}
+.hintline{color:#b6a58e}
+#game{max-width:1600px;margin:auto;padding:clamp(10px,1.5vw,22px);grid-template-columns:minmax(0,1fr) minmax(270px,330px);gap:14px}
+.scene-card,.sidebar{background:linear-gradient(145deg,#292521f5,#1d1b19f5);border:1px solid #65513d;border-radius:12px;box-shadow:0 18px 55px #0007;color:#eee4d6}
+.scene-top{padding:15px 18px;border-bottom:1px solid #514336}
+.chapter,.small-label{color:#c1a176}
+.scene-top h2{color:#f0e5d7}
+.scene-top p{color:#b5a48e}
+.stage{background:#28221d}
+.scene-bottom{background:#211e1a;border-top:1px solid #514336;color:#c2b29e}
+.stage-hint{background:#211d19df;border:1px solid #7b6347;color:#e6d7c3}
+.hotspot.near{border-color:#e2c18d;background:#e2c18d22;box-shadow:0 0 0 3px #d4b17b33,0 0 22px #e6c28b55}
+.hotspot:after{background:#29231d;color:#f1e5d5;border-color:#92734d}
+.sidebar{padding:17px}
+.sidebar h3{color:#f2e7d9}
+.story{color:#d2c4b2}
+.rule{background:#514336}
+.actions button,.sidebtn{background:#302a24;border:1px solid #66513b;color:#eee2d2}
+.inventory .item,.item{background:#302a24;border-color:#69543d;color:#eadbc7}
+.item.selected{outline:2px solid #c5a477;background:#4b3929}
+.status{color:#b9aa96}
+#modal{background:#0e0d0ce8;backdrop-filter:blur(8px)}
+.modal-card{background:#25211d;border:1px solid #796044;color:#eee3d4;box-shadow:0 25px 90px #000b}
+.modal-head{background:#25211d;border-bottom:1px solid #5b4937}
+.modal-head h3{color:#f1e5d5}
+.modal-head button{color:#e9d7c0}
+.modal-actions button{background:#342c24;border-color:#70583e;color:#f0e2d0}
+.gear{background:#302a24;border-color:#68533c;color:#eee2d2}
+.wheel{background:radial-gradient(circle,#e7dcc9 0 26%,#927c5e 28% 38%,#40362a 40%);border-color:#b69a70}
+.code{background:#191715;color:#f3e7d8;border-color:#806747}
+.journal{color:#d8c9b6}
+@media(max-width:850px){#game{grid-template-columns:1fr}.sidebar{padding:14px}.stage{aspect-ratio:4/3}}
+@media(max-width:460px){header{height:auto;min-height:60px;gap:8px;flex-wrap:wrap;padding:9px 10px}.headtools{gap:5px}.headtools button{font-size:10px;padding:7px 8px}.stage{aspect-ratio:1/1}.scene-top{padding:12px}.scene-top h2{font-size:20px}}
+
 </style></head><body><div id="app">
 <header id="header" class="hidden"><div><strong>記憶重生</strong> <small>MEMORY REBIRTH</small></div><div class="headtools"><button id="bagBtn">物品欄</button><button id="journalBtn">筆記本</button><button id="saveBtn">存檔</button><button id="menuBtn">選單</button></div></header>
 <section id="title"><div class="cover"><div class="eyebrow">A STORY OF MEMORY AND LOVE</div><h1>記憶重生</h1><div class="sub">有些人忘了，有些事還在。</div><p>一個熟悉的家，一段逐漸模糊的生活。<br>當記憶開始出現落差，你還能相信眼前的一切嗎？</p><button class="primary" id="startBtn">開始探索</button><div class="hintline">自由移動 × 物品操作 × 劇情推理<br>臥室與浴室互動測試版</div></div></section>
