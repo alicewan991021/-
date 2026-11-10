@@ -15,6 +15,9 @@ header{height:58px;display:flex;align-items:center;justify-content:space-between
 @media(max-width:850px){#game{grid-template-columns:1fr;padding:9px}.sidebar{padding:13px}.story{min-height:65px}.stage{aspect-ratio:4/3}.scene-top h2{font-size:21px}header{padding:0 12px}}
 @media(max-width:460px){.gear-grid{grid-template-columns:repeat(2,1fr)}.stage{aspect-ratio:1/1}.headtools button{padding:7px 8px;font-size:10px}.scene-bottom{font-size:10px}}
 
+/* 第一人稱探索：不顯示第三人稱小人，移動位置僅作為靠近互動物件的狀態判斷 */
+.player{display:none!important}
+
 /* MEMORY REBIRTH — refreshed warm modern interface */
 :root{--ink:#eee6da;--muted:#b8aa98;--paper:#24211e;--line:#55483b;--wood:#8a6b4d;--gold:#c4a477;--shadow:0 18px 55px #0008}
 html{background:#171614}
