@@ -88,32 +88,22 @@ header small{color:#b59a76}
 .prologue-actions button.primary{background:linear-gradient(135deg,#a98658,#76583a);color:#fff}
 @media(max-width:600px){.prologue-copy{padding:24px 20px}.prologue-copy h2{font-size:24px}.prologue-copy p{font-size:14px}}
 
-/* 序幕：床邊第一人稱動作層 */
+
+/* 序幕床邊互動：保留完整臥室原圖，不覆蓋原有床與枕頭 */
 .prologue-bedview{position:absolute;inset:0;z-index:2;display:none;overflow:hidden;background:#171513}
 .prologue-bedview.active{display:block}
-.prologue-bedphoto{position:absolute;inset:0;background-image:linear-gradient(180deg,#17151355,#17151322 42%,#17151399),url("assets/bedroom_bg.jpg");background-size:cover;background-position:center 70%;transform:scale(1.28);filter:blur(1.5px) brightness(.72)}
-.prologue-bedshade{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 65%,transparent 5%,#08080877 100%)}
-.prologue-pillow{display:none}
-.prologue-pillow:before{display:none}
-.prologue-hand{position:absolute;z-index:3;width:clamp(95px,17vw,190px);height:clamp(190px,32vw,330px);left:calc(50% - 30px);bottom:-42%;transform:rotate(-25deg);transform-origin:50% 90%;opacity:0;pointer-events:none}
-.prologue-hand:before{content:"";position:absolute;left:20%;bottom:0;width:60%;height:76%;border-radius:48% 48% 22% 22%;background:linear-gradient(90deg,#8f6551,#c99d80 35%,#d8b397 70%,#9e725d);box-shadow:inset -10px 0 16px #65463555,0 -5px 20px #0004}
-.prologue-hand:after{content:"";position:absolute;left:28%;top:0;width:44%;height:42%;border-radius:48% 48% 35% 35%;background:linear-gradient(90deg,#9b715b,#d6ae91 45%,#bd8d70);transform:rotate(12deg);box-shadow:inset -5px 0 8px #68463355}
-.prologue-bedview.reaching .prologue-hand{animation:reachPillow 1.15s cubic-bezier(.2,.7,.2,1) forwards}
-.prologue-bedview.reaching .prologue-pillow{display:none}
-.prologue-bedview.empty .prologue-pillow{transform:translateX(-50%) rotate(-3deg) scale(.98);filter:brightness(.86)}
-@keyframes reachPillow{0%{opacity:0;bottom:-42%;transform:rotate(-25deg)}25%{opacity:1}75%{bottom:4%;transform:rotate(-8deg)}100%{opacity:1;bottom:1%;transform:rotate(-8deg)}}
-@keyframes pillowPress{0%,100%{filter:brightness(1);transform:translateX(-50%) rotate(-3deg)}50%{filter:brightness(.82);transform:translateX(-50%) rotate(-3deg) scaleY(.94)}}
-.prologue-bedcaption{position:absolute;z-index:4;left:50%;top:9%;transform:translateX(-50%);width:min(560px,calc(100% - 36px));text-align:center;color:#f1e8dc;text-shadow:0 2px 12px #000;background:#17151399;border:1px solid #ffffff26;border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.8;backdrop-filter:blur(8px)}
+.prologue-bedphoto{position:absolute;inset:0;background-image:linear-gradient(180deg,#17151322,#17151311 45%,#17151355),url("assets/bedroom_bg.jpg");background-size:cover;background-position:center 58%;transform:none;filter:none}
+.prologue-bedshade{position:absolute;inset:0;background:linear-gradient(180deg,#08080822 0%,transparent 35%,#08080822 100%);pointer-events:none}
+.prologue-bedcaption{position:absolute;z-index:4;left:50%;top:9%;transform:translateX(-50%);width:min(560px,calc(100% - 36px));text-align:center;color:#f1e8dc;text-shadow:0 2px 12px #000;background:#171513b8;border:1px solid #ffffff26;border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.8;backdrop-filter:blur(8px);pointer-events:none}
 .prologue-copy.interaction-hidden{display:none}
-.prologue-bedcontrols{position:fixed;z-index:100;left:50%;bottom:34px;transform:translateX(-50%);width:min(92%,520px);display:flex;justify-content:center;gap:10px;pointer-events:auto}
-.prologue-bedcontrols button{border:1px solid #c6a77a;background:#28221ddd;color:#f5eadb;border-radius:8px;padding:12px 20px;font-size:14px;box-shadow:0 8px 24px #0008;min-width:190px}
+.prologue-bedcontrols{position:absolute;z-index:8;left:50%;bottom:26px;transform:translateX(-50%);width:min(92%,520px);display:flex;justify-content:center;gap:10px;pointer-events:auto}
+.prologue-bedcontrols button{border:1px solid #c6a77a;background:#28221ddd;color:#f5eadb;border-radius:8px;padding:13px 22px;font-size:14px;box-shadow:0 8px 24px #0008;min-width:210px;cursor:pointer}
 .prologue-bedcontrols button:disabled{opacity:.6}
-@media(max-width:600px){.prologue-pillow{width:86vw;height:34vw;min-height:140px}.prologue-bedcontrols{bottom:18px}.prologue-bedcontrols button{width:100%}}
-.prologue-actions button:disabled{opacity:.45;cursor:default}
+@media(max-width:600px){.prologue-bedcontrols{bottom:18px}.prologue-bedcontrols button{width:100%}}
 </style></head><body><div id="app">
 <header id="header" class="hidden"><div><strong>記憶重生</strong> <small>MEMORY REBIRTH</small></div><div class="headtools"><button id="bagBtn">物品欄</button><button id="journalBtn">筆記本</button><button id="saveBtn">存檔</button><button id="menuBtn">選單</button></div></header>
 <section id="title"><div class="cover"><div class="eyebrow">A STORY OF MEMORY AND LOVE</div><h1>記憶重生</h1><div class="sub">有些人忘了，有些事還在。</div><p>一個熟悉的家，一段逐漸模糊的生活。<br>當記憶開始出現落差，你還能相信眼前的一切嗎？</p><button class="primary" id="startBtn">開始探索</button><div class="hintline">生活探索 × 記憶體驗 × 劇情解謎<br>序幕與第一章重建中</div></div></section>
-<section id="prologue" class="hidden" aria-live="polite"><div class="prologue-screen" id="prologueScreen"><div class="prologue-rain" aria-hidden="true"></div><div class="prologue-bedview" id="prologueBedview" aria-hidden="true"><div class="prologue-bedphoto"></div><div class="prologue-bedshade"></div><div class="prologue-hand"></div><div class="prologue-bedcontrols" id="prologueBedcontrols"></div><div class="prologue-bedcaption" id="prologueBedcaption">枕頭就在眼前。你抬起手，想確認底下的東西還在不在。</div></div><div class="prologue-copy" id="prologueCopy"><div class="small-label">PROLOGUE · 06:18</div><h2 id="prologueTitle">雨聲</h2><p id="prologueText">……</p><div class="prologue-actions" id="prologueActions"></div></div></div></section>
+<section id="prologue" class="hidden" aria-live="polite"><div class="prologue-screen" id="prologueScreen"><div class="prologue-rain" aria-hidden="true"></div><div class="prologue-bedview" id="prologueBedview" aria-hidden="true"><div class="prologue-bedphoto"></div><div class="prologue-bedshade"></div><div class="prologue-bedcontrols" id="prologueBedcontrols"></div><div class="prologue-bedcaption" id="prologueBedcaption">枕頭就在眼前。你抬起手，想確認底下的東西還在不在。</div></div><div class="prologue-copy" id="prologueCopy"><div class="small-label">PROLOGUE · 06:18</div><h2 id="prologueTitle">雨聲</h2><p id="prologueText">……</p><div class="prologue-actions" id="prologueActions"></div></div></div></section>
 <section id="game" class="hidden"><div class="scene-card"><div class="scene-top"><div><div class="chapter" id="chapter">CHAPTER 01</div><h2 id="roomTitle">臥室</h2></div><p id="roomSub">雨天清晨 · 06:18</p></div><div class="stage" id="stage"></div><div class="scene-bottom"><span id="sceneCaption">在房間內移動，靠近物件後調查。</span><span class="move-help">⌖ 點地面移動</span></div></div><aside class="sidebar"><div class="small-label">CURRENT MOMENT</div><h3 id="panelTitle">醒來</h3><div class="story" id="story"></div><div class="actions" id="actions"></div><div class="rule"></div><div class="small-label">物品欄</div><div class="inventory" id="inventory"></div><div class="rule"></div><div class="small-label">探索紀錄</div><div class="status" id="progress">尚未發現線索</div><div class="status">移動：點擊地面／拖曳方向控制（鍵盤可用方向鍵或 WASD）。靠近物件後點擊調查。</div></aside></section></div>
 <div id="modal" class="hidden"><div class="modal-card" id="modalCard"></div></div>
 <script>
@@ -151,7 +141,7 @@ function start(){
  }
  $("prologue").classList.remove("hidden");
  $("prologueScreen").classList.remove("awake");
- $("prologueBedview").classList.remove("active","reaching","empty");$("prologueBedcontrols").innerHTML="";
+ $("prologueBedview").classList.remove("active");$("prologueBedcontrols").innerHTML="";
  $("prologueBedview").setAttribute("aria-hidden","true");
  $("prologueCopy").classList.remove("interaction-hidden");
  prologueStep("雨聲","黑暗裡先傳來雨聲。\n\n你還沒睜開眼，太陽穴已經一陣一陣抽痛。",[
@@ -168,16 +158,16 @@ function start(){
      button.className="primary";button.textContent="伸手探進枕頭底下";
      button.onclick=()=>{
       button.disabled=true;button.textContent="正在摸索……";
-      view.classList.add("reaching");
+      
       window.setTimeout(()=>{
-       view.classList.add("empty");
+       
        $("prologueBedcaption").textContent="指尖沿著枕頭邊緣摸進去。布料被壓出一道皺褶，卻沒有碰到預期中的冰冷硬物。";
        button.disabled=false;button.textContent="收回手";
        button.onclick=()=>{
         $("prologueBedcaption").textContent="空的。槍不在原本的位置。你盯著枕頭，腦中卻浮現不出它最後一次放在這裡的畫面。";
         button.textContent="坐起身";
         button.onclick=()=>{
-         view.classList.remove("active","reaching","empty");view.setAttribute("aria-hidden","true");$("prologueBedcontrols").innerHTML="";
+         view.classList.remove("active");view.setAttribute("aria-hidden","true");$("prologueBedcontrols").innerHTML="";
          $("prologueCopy").classList.remove("interaction-hidden");
          prologueStep("坐起身","你撐著床墊慢慢坐起來。頭痛仍然沒有退，雨聲從窗邊傳來。\n\n房間很熟悉，只是有些東西的位置，好像跟記憶裡不太一樣。",[
           {label:"開始查看房間",primary:true,fn:()=>{
