@@ -199,7 +199,7 @@ function bedRoutine(){
  const d=document.createElement("div");
  d.append(paragraph("床墊因為你的動作微微下陷。頭痛一陣一陣傳來，身體還沒完全醒過來。你可以先做一件日常的小事。"));
  const opts=[
-  {label:"坐在床沿",fn:()=>{closeModal();say("床沿","你慢慢把腳放到地板上。起身太快，眼前短暫發白，只好扶住床沿等暈眩過去。",{ });}},
+  {label:"坐在床沿",fn:()=>{closeModal();say("床沿","你慢慢把腳放到地板上。起身太快，眼前短暫發白，只好扶住床沿等暈眩過去。");}},
   {label:"重新摸摸枕頭",fn:()=>{closeModal();let p=document.createElement("div");p.append(paragraph("你把枕頭翻過來，摸過縫線與枕套邊緣。裡面只有柔軟的填充物，沒有槍，也沒有其他東西。"));p.append(paragraph("你很確定自己曾把某樣東西放在這裡，但一時想不起最後一次確認它的時間。"));modal("枕頭",p,[{label:"放回原位",primary:true,fn:()=>{addClue("empty_pillow","枕頭底下沒有槍。敬偉記得自己曾把東西放在這裡，卻想不起最後確認的時間。");closeModal();say("床邊","你把枕頭放回原位。床頭的機械鐘仍在走，秒針規律地發出細小聲響。")}}]);}},
   {label:"躺著休息一下",fn:()=>{closeModal();say("短暫休息","你重新躺下，閉上眼睛數著雨聲。頭痛沒有消失，但呼吸慢慢平穩下來。過了一會兒，你才有力氣坐起身。",[{label:"坐起來",primary:true,fn:()=>say("床沿","你扶著床沿坐起來，等那陣暈眩稍微退去。")}]);}}
  ];
