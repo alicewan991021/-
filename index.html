@@ -141,24 +141,24 @@ function start(){
  }
  $("prologue").classList.remove("hidden");
  $("prologueScreen").classList.remove("awake");
- $("prologueBedview").classList.remove("active");$("prologuePillowHit").classList.add("hidden");
+ $("prologueBedview").classList.remove("active");
+ $("prologuePillowHit").classList.add("hidden");
  $("prologueBedview").setAttribute("aria-hidden","true");
  $("prologueCopy").classList.remove("interaction-hidden");
- prologueStep("雨聲","黑暗裡先傳來雨聲。\n\n你還沒睜開眼，太陽穴已經一陣一陣抽痛。",[
+ prologueStep("雨聲","黑暗裡先傳來雨聲。\\n\\n你還沒睜開眼，太陽穴已經一陣一陣抽痛。",[
   {label:"慢慢睜開眼",primary:true,fn:()=>{
    $("prologueScreen").classList.add("awake");
-   prologueStep("醒來","視線從模糊慢慢聚焦。熟悉的天花板、窗外的雨，以及身下的床。\n\n頭很痛。枕頭底下似乎有什麼，你下意識想伸手確認。",[
+   prologueStep("醒來","視線從模糊慢慢聚焦。熟悉的天花板、窗外的雨，以及身下的床。\\n\\n頭很痛。枕頭底下似乎有什麼，你下意識想伸手確認。",[
     {label:"伸手摸向枕頭下方",primary:true,fn:()=>{
      const view=$("prologueBedview");
      view.classList.add("active");view.setAttribute("aria-hidden","false");
      $("prologueCopy").classList.add("interaction-hidden");
-     $("prologueBedcaption").textContent="你抬起手，想確認枕頭底下的東西還在不在。";
-     $("prologueActions").innerHTML="";$("prologuePillowHit").classList.add("hidden");
+     $("prologueBedcaption").textContent="請點擊畫面中床上的枕頭，確認底下的東西還在不在。";
      const hit=$("prologuePillowHit");
+     hit.classList.remove("hidden");
      hit.onclick=()=>{
       hit.classList.add("hidden");
-      $("prologueBedcaption").textContent="你把手伸到枕頭底下，沿著枕套邊緣慢慢摸索。";
-      prologueStep("枕頭下方","手指沿著枕頭底下摸了一圈。布料被壓出皺褶，指尖卻沒有碰到預期中的冰冷硬物。",[
+      prologueStep("枕頭下方","你把手伸到枕頭底下，沿著枕套邊緣慢慢摸索。布料被壓出皺褶，指尖卻沒有碰到預期中的冰冷硬物。",[
        {label:"再確認一次",fn:()=>{
         prologueStep("空的","你換了另一側再摸一次，仍然什麼也沒有。槍不在原本的位置。你盯著枕頭，卻想不起最後一次確認它的時間。",[
          {label:"坐起身",primary:true,fn:()=>{
@@ -176,13 +176,6 @@ function start(){
        }}
       ]);
      };
-    }}
-         ]);
-        };
-       };
-      },1050);
-     };
-     $("prologueBedcontrols").append(button);
     }}
    ]);
   }}
