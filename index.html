@@ -103,7 +103,7 @@ header small{color:#b59a76}
 </style></head><body><div id="app">
 <header id="header" class="hidden"><div><strong>記憶重生</strong> <small>MEMORY REBIRTH</small></div><div class="headtools"><button id="bagBtn">物品欄</button><button id="journalBtn">筆記本</button><button id="saveBtn">存檔</button><button id="menuBtn">選單</button></div></header>
 <section id="title"><div class="cover"><div class="eyebrow">A STORY OF MEMORY AND LOVE</div><h1>記憶重生</h1><div class="sub">有些人忘了，有些事還在。</div><p>一個熟悉的家，一段逐漸模糊的生活。<br>當記憶開始出現落差，你還能相信眼前的一切嗎？</p><button class="primary" id="startBtn">開始探索</button><div class="hintline">生活探索 × 記憶體驗 × 劇情解謎<br>序幕與第一章重建中</div></div></section>
-<section id="prologue" class="hidden" aria-live="polite"><div class="prologue-screen" id="prologueScreen"><div class="prologue-rain" aria-hidden="true"></div><div class="prologue-bedview" id="prologueBedview" aria-hidden="true"><div class="prologue-bedphoto"></div><div class="prologue-bedshade"></div><div class="prologue-bedcontrols" id="prologueBedcontrols"></div><div class="prologue-bedcaption" id="prologueBedcaption">枕頭就在眼前。你抬起手，想確認底下的東西還在不在。</div></div><div class="prologue-copy" id="prologueCopy"><div class="small-label">PROLOGUE · 06:18</div><h2 id="prologueTitle">雨聲</h2><p id="prologueText">……</p><div class="prologue-actions" id="prologueActions"></div></div></div></section>
+<section id="prologue" class="hidden" aria-live="polite"><div class="prologue-screen" id="prologueScreen"><div class="prologue-rain" aria-hidden="true"></div><div class="prologue-bedview" id="prologueBedview" aria-hidden="true"><div class="prologue-bedphoto"></div><div class="prologue-bedshade"></div><button class="prologue-pillow-hit" id="prologuePillowHit" type="button" aria-label="摸索枕頭下方"></button><div class="prologue-bedcaption" id="prologueBedcaption">枕頭就在眼前。你抬起手，想確認底下的東西還在不在。</div></div><div class="prologue-copy" id="prologueCopy"><div class="small-label">PROLOGUE · 06:18</div><h2 id="prologueTitle">雨聲</h2><p id="prologueText">……</p><div class="prologue-actions" id="prologueActions"></div></div></div></section>
 <section id="game" class="hidden"><div class="scene-card"><div class="scene-top"><div><div class="chapter" id="chapter">CHAPTER 01</div><h2 id="roomTitle">臥室</h2></div><p id="roomSub">雨天清晨 · 06:18</p></div><div class="stage" id="stage"></div><div class="scene-bottom"><span id="sceneCaption">在房間內移動，靠近物件後調查。</span><span class="move-help">⌖ 點地面移動</span></div></div><aside class="sidebar"><div class="small-label">CURRENT MOMENT</div><h3 id="panelTitle">醒來</h3><div class="story" id="story"></div><div class="actions" id="actions"></div><div class="rule"></div><div class="small-label">物品欄</div><div class="inventory" id="inventory"></div><div class="rule"></div><div class="small-label">探索紀錄</div><div class="status" id="progress">尚未發現線索</div><div class="status">移動：點擊地面／拖曳方向控制（鍵盤可用方向鍵或 WASD）。靠近物件後點擊調查。</div></aside></section></div>
 <div id="modal" class="hidden"><div class="modal-card" id="modalCard"></div></div>
 <script>
@@ -141,7 +141,7 @@ function start(){
  }
  $("prologue").classList.remove("hidden");
  $("prologueScreen").classList.remove("awake");
- $("prologueBedview").classList.remove("active");$("prologueBedcontrols").innerHTML="";
+ $("prologueBedview").classList.remove("active");$("prologuePillowHit").classList.add("hidden");
  $("prologueBedview").setAttribute("aria-hidden","true");
  $("prologueCopy").classList.remove("interaction-hidden");
  prologueStep("雨聲","黑暗裡先傳來雨聲。\n\n你還沒睜開眼，太陽穴已經一陣一陣抽痛。",[
@@ -153,28 +153,30 @@ function start(){
      view.classList.add("active");view.setAttribute("aria-hidden","false");
      $("prologueCopy").classList.add("interaction-hidden");
      $("prologueBedcaption").textContent="你抬起手，想確認枕頭底下的東西還在不在。";
-     $("prologueActions").innerHTML="";$("prologueBedcontrols").innerHTML="";
-     const button=document.createElement("button");
-     button.className="primary";button.textContent="伸手探進枕頭底下";
-     button.onclick=()=>{
-      button.disabled=true;button.textContent="正在摸索……";
-      
-      window.setTimeout(()=>{
-       
-       $("prologueBedcaption").textContent="指尖沿著枕頭邊緣摸進去。布料被壓出一道皺褶，卻沒有碰到預期中的冰冷硬物。";
-       button.disabled=false;button.textContent="收回手";
-       button.onclick=()=>{
-        $("prologueBedcaption").textContent="空的。槍不在原本的位置。你盯著枕頭，腦中卻浮現不出它最後一次放在這裡的畫面。";
-        button.textContent="坐起身";
-        button.onclick=()=>{
-         view.classList.remove("active");view.setAttribute("aria-hidden","true");$("prologueBedcontrols").innerHTML="";
-         $("prologueCopy").classList.remove("interaction-hidden");
-         prologueStep("坐起身","你撐著床墊慢慢坐起來。頭痛仍然沒有退，雨聲從窗邊傳來。\n\n房間很熟悉，只是有些東西的位置，好像跟記憶裡不太一樣。",[
-          {label:"開始查看房間",primary:true,fn:()=>{
-           S.prologueDone=true;save();$("prologue").classList.add("hidden");
-           $("header").classList.remove("hidden");$("game").classList.remove("hidden");render();
-           say("臥室 · 06:18","你坐在床沿，花了一點時間讓暈眩退去。枕頭下方空無一物。\n\n你可以先緩一緩，再按自己的步調查看房間。");
-          }}
+     $("prologueActions").innerHTML="";$("prologuePillowHit").classList.add("hidden");
+     const hit=$("prologuePillowHit");
+     hit.onclick=()=>{
+      hit.classList.add("hidden");
+      $("prologueBedcaption").textContent="你把手伸到枕頭底下，沿著枕套邊緣慢慢摸索。";
+      prologueStep("枕頭下方","手指沿著枕頭底下摸了一圈。布料被壓出皺褶，指尖卻沒有碰到預期中的冰冷硬物。",[
+       {label:"再確認一次",fn:()=>{
+        prologueStep("空的","你換了另一側再摸一次，仍然什麼也沒有。槍不在原本的位置。你盯著枕頭，卻想不起最後一次確認它的時間。",[
+         {label:"坐起身",primary:true,fn:()=>{
+          view.classList.remove("active");view.setAttribute("aria-hidden","true");
+          $("prologueCopy").classList.remove("interaction-hidden");
+          prologueStep("坐起身","你撐著床墊慢慢坐起來。頭痛仍然沒有退，雨聲從窗邊傳來。\\n\\n房間很熟悉，只是有些東西的位置，好像跟記憶裡不太一樣。",[
+           {label:"開始查看房間",primary:true,fn:()=>{
+            S.prologueDone=true;save();$("prologue").classList.add("hidden");
+            $("header").classList.remove("hidden");$("game").classList.remove("hidden");render();
+            say("臥室 · 06:18","你坐在床沿，花了一點時間讓暈眩退去。枕頭下方空無一物。\\n\\n你可以先緩一緩，再按自己的步調查看房間。");
+           }}
+          ]);
+         }}
+        ]);
+       }}
+      ]);
+     };
+    }}
          ]);
         };
        };
