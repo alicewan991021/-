@@ -100,6 +100,15 @@ header small{color:#b59a76}
 .prologue-bedcontrols button{border:1px solid #c6a77a;background:#28221ddd;color:#f5eadb;border-radius:8px;padding:13px 22px;font-size:14px;box-shadow:0 8px 24px #0008;min-width:210px;cursor:pointer}
 .prologue-bedcontrols button:disabled{opacity:.6}
 @media(max-width:600px){.prologue-bedcontrols{bottom:18px}.prologue-bedcontrols button{width:100%}}
+
+/* Pillow interaction target: transparent hit area aligned to the real pillow in the background image */
+.prologue-bedview{position:absolute;inset:0;z-index:10;overflow:hidden;pointer-events:none}
+.prologue-bedview.active{display:block}
+.prologue-bedphoto,.prologue-bedshade,.prologue-bedcaption{pointer-events:none}
+.prologue-pillow-hit{display:block!important;position:absolute!important;z-index:40!important;left:0!important;top:37%!important;width:49%!important;height:30%!important;margin:0!important;padding:0!important;border:2px solid transparent!important;border-radius:24px!important;background:transparent!important;cursor:pointer!important;pointer-events:auto!important;touch-action:manipulation!important}
+.prologue-pillow-hit.hidden{display:none!important}
+.prologue-pillow-hit:hover,.prologue-pillow-hit:focus-visible{border-color:#e7d2ad88!important;background:#e7d2ad12!important;outline:2px solid #e7d2ad66!important;outline-offset:-5px}
+.prologue-bedcaption{z-index:35!important}
 </style></head><body><div id="app">
 <header id="header" class="hidden"><div><strong>記憶重生</strong> <small>MEMORY REBIRTH</small></div><div class="headtools"><button id="bagBtn">物品欄</button><button id="journalBtn">筆記本</button><button id="saveBtn">存檔</button><button id="menuBtn">選單</button></div></header>
 <section id="title"><div class="cover"><div class="eyebrow">A STORY OF MEMORY AND LOVE</div><h1>記憶重生</h1><div class="sub">有些人忘了，有些事還在。</div><p>一個熟悉的家，一段逐漸模糊的生活。<br>當記憶開始出現落差，你還能相信眼前的一切嗎？</p><button class="primary" id="startBtn">開始探索</button><div class="hintline">生活探索 × 記憶體驗 × 劇情解謎<br>序幕與第一章重建中</div></div></section>
