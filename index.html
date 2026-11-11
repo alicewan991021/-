@@ -75,8 +75,8 @@ header small{color:#b59a76}
 
 #prologue{position:fixed;inset:0;z-index:15;background:#090a0c;color:#eee6da;display:grid;place-items:center;overflow:hidden}
 #prologue.hidden{display:none}
-.prologue-screen{position:relative;width:100%;height:100%;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 80%,#32343a 0,#17191e 42%,#08090b 82%);transition:background 2s ease}
-.prologue-screen.awake{background:linear-gradient(180deg,#5c6268 0%,#34383e 34%,#252322 72%,#151413 100%)}
+.prologue-screen{position:relative;width:100%;height:100%;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 80%,#32343a 0,#17191e 42%,#08090b 82%);transition:background 2s ease,filter 2s ease}
+.prologue-screen.awake{background:linear-gradient(180deg,#5c626855 0%,#34383e55 34%,#25232266 72%,#15141388 100%),url("assets/bedroom_bg.jpg") center 58%/cover no-repeat;filter:saturate(.72)}
 .prologue-rain{position:absolute;inset:-20%;opacity:.25;background-image:repeating-linear-gradient(102deg,transparent 0 18px,#b9c6cc 19px,transparent 20px 38px);animation:rainDrift .8s linear infinite;mask-image:linear-gradient(180deg,#000,transparent 92%)}
 @keyframes rainDrift{from{transform:translateY(-20px)}to{transform:translateY(20px)}}
 .prologue-copy{position:relative;z-index:1;width:min(620px,calc(100% - 40px));padding:32px;border:1px solid #ffffff20;background:#111216b8;backdrop-filter:blur(10px);box-shadow:0 20px 80px #0008}
